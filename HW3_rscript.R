@@ -92,9 +92,11 @@ number_vec <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 #create the loop 
 
+squared_vec <- vector()
+
 for (number in number_vec) {
-  number_vec^2
-  print(number_vec^2)
+  squared_vec <- number^2
+  print(squared_vec)
 }
 
-#not sure why the result is more of a matrix?
+#model exponential population growth
