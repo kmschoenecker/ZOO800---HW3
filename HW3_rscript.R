@@ -128,3 +128,9 @@ print(pop) #when we leave print(pop) inside the for loop, we get our results rep
 
 #Part 4 Phosphorus Concentration Question
 
+#Create a list called phosphorus with 5 elements (one per lake), each containing 4numeric values. Use made-up numbers, but keep them realistic (e.g., 5–40 μg/L)
+
+lakes = list(lakes = c("Lake1","Lake2","Lake3","Lake4","Lake5"), phosphorus = c(list(runif(4,5,40)),list(runif(4,5,40)), list(runif(4,5,40)), list(runif(4,5,40)), list(runif(4,5,40)))) 
+#Thank you Statology and R.Doc.org! 
+
+       
