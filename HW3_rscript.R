@@ -77,7 +77,8 @@ lakes$Temp_F <- Temp_F #not sure why the dollar sign works, but it does
 install.packages("LakeMetabolizer")
 library("LakeMetabolizer")
 
-equil_sat_oxy <- o2.at.sat(lakes) #when I try to run this chunk of code, I get thrown errors
+#equil_sat_oxy <- o2.at.sat(lakes) 
+#when I try to run this chunk of code, I get thrown errors
 #one of those errors is that I need datetime and water temp in C
 #is there a spot where we were supposed to plug in date-time info?
 
@@ -133,4 +134,55 @@ print(pop) #when we leave print(pop) inside the for loop, we get our results rep
 lakes = list(lakes = c("Lake1","Lake2","Lake3","Lake4","Lake5"), phosphorus = c(list(runif(4,5,40)),list(runif(4,5,40)), list(runif(4,5,40)), list(runif(4,5,40)), list(runif(4,5,40)))) 
 #Thank you Statology and R.Doc.org! 
 
-       
+#Write a for loop that:
+#Iterates through each lake in the list.
+#Calculates the mean phosphorus concentration for that lake.
+#Stores these means in a new numeric vector called lake_means.
+#Prints a message for each lake, e.g., "Lake1 mean phosphorus = 18.75 μg/L
+
+#create an empty to store lake_means
+
+lake_means <- numeric()
+
+for (phosphorus in lakes$phosphorus) {
+  lake_means <- c(lake_means, mean(phosphorus))
+  print(paste(lakes$lakes,"mean phosphorus =", mean(phosphorus), "ug/L"))
+}
+
+#our for loop keeps repeating the values
+
+lake_means
+
+#Part 5 Apply Functions ----
+
+#Revisit your chlorophyll array from Part 2. Use apply() to calculate:
+#The mean concentration for each day (rows).
+
+apply(chlorophyll_concentrations, 1, mean) #setting margin to 1 specifies to perform the function across the rows
+
+#The mean concentration for each depth (columns)
+
+apply(chlorophyll_concentrations, 2, mean) #setting margin to 2 specifies to perform the function across the columns
+
+#Revisit your lakes data frame. Use apply() to calculate the range (max – min) of each
+#numeric column.
+
+#subset the numeric columns in your dataframe
+
+numeric_lakes <- lakes[,2:4] #had to subset to effectively use range later on, or else apply kept trying to take a range of lakes
+
+x = seq(1:6)
+range2 = function(x) { 
+  return(max(x) - min(x))
+         }
+
+apply(numeric_lakes, 2, range2)
+
+#Compare using for loops to apply functions
+
+#The apply functions seemed faster to write out than the for loops.
+#Though in the apply function, it is harder to tell where something is going wrong when it does happen.
+#For instance, trying to get the range results to subtract to return one value was being quite wonky, and would not work until
+#we wrote a whole function to do that in r. Simply using range in apply would return the max and minimum values.
+#Apply functions look a bit cleaner compared to writing a longer for loop. 
+
