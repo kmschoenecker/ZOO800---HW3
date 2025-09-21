@@ -95,8 +95,36 @@ number_vec <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 squared_vec <- vector()
 
 for (number in number_vec) {
+  number_vec^2
+  print(number_vec^2)
   squared_vec <- number^2
   print(squared_vec)
 }
 
+<<<<<<< HEAD
+#Part 2 
+#Suppose you want to model exponential population growth with Nt=N0*e^rt
+#Let N0=10, r=0.3, and simulate 10 time steps.Use a for loop to calculate population size at each time step and store results in a vector called pop
+
+#Setting up our starting values 
+N0 = 10 
+r = 0.3 
+e = exp(1)
+t = seq(1:10) 
+
+#create a function for the equation Nt = N0*e&rt 
+exponential = function (t) {
+  return(N0*e^(r*t))
+}
+exponential(5)
+
+pop = vector() #create an emtpy vector called pop that we will fill in our answers 
+for (time in t) { 
+  pop = c(pop, exponential(t))
+  }
+pop
+
+
+=======
 #model exponential population growth
+>>>>>>> 044e45630c221229084c9ec00d1e4d1f3f818c6f
