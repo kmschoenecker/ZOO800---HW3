@@ -59,22 +59,21 @@ DO_mgL <- c(8.3, 6.7, 7.5, 7.9, 6.2)
 
 #merge these three variables into one dataframe
 
-lakes <- data.frame(Lake, Temp_C, DO_mgL)
+lakes_df <- data.frame(Lake, Temp_C, DO_mgL)
 
 #now take the mean temperature and mean DO across all lakes
 
-mean(lakes$Temp_C)
-mean(lakes$DO_mgL)
+mean(lakes_df$Temp_C)
+mean(lakes_df$DO_mgL)
 
 #add a column converting the temperature in C to temperature in F
 
 #convert temperatures in C to Fahrenheit
 
-Temp_F <- lakes$Temp_C * (9/5) + 32 #creates a new vector with your temp C column converted
+Temp_F <- lakes_df$Temp_C * (9/5) + 32 #creates a new vector with your temp C column converted
 
-lakes$Temp_F <- Temp_F #not sure why the dollar sign works, but it does
+lakes_df$Temp_F <- Temp_F #not sure why the dollar sign works, but it does
 
-install.packages("LakeMetabolizer")
 library("LakeMetabolizer")
 
 #equil_sat_oxy <- o2.at.sat(lakes) 
@@ -149,7 +148,8 @@ for (phosphorus in lakes$phosphorus) {
   print(paste(lakes$lakes,"mean phosphorus =", mean(phosphorus), "ug/L"))
 }
 
-#our for loop keeps repeating the values
+#our for loop keeps repeating the values, listing out all the mean values for each lake
+#not sure how we can correct the code that it only prints the first value with lake 1, the second value with lake 2, etc
 
 lake_means
 
@@ -169,7 +169,7 @@ apply(chlorophyll_concentrations, 2, mean) #setting margin to 2 specifies to per
 
 #subset the numeric columns in your dataframe
 
-numeric_lakes <- lakes[,2:4] #had to subset to effectively use range later on, or else apply kept trying to take a range of lakes
+numeric_lakes <- lakes_df[,2:4] #had to subset to effectively use range later on, or else apply kept trying to take a range of lakes
 
 x = seq(1:6)
 range2 = function(x) { 
