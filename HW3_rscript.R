@@ -97,4 +97,26 @@ for (number in number_vec) {
   print(number_vec^2)
 }
 
-#not sure why the result is more of a matrix?
+#Part 2 
+#Suppose you want to model exponential population growth with Nt=N0*e^rt
+#Let N0=10, r=0.3, and simulate 10 time steps.Use a for loop to calculate population size at each time step and store results in a vector called pop
+
+#Setting up our starting values 
+N0 = 10 
+r = 0.3 
+e = exp(1)
+t = seq(1:10) 
+
+#create a function for the equation Nt = N0*e&rt 
+exponential = function (t) {
+  return(N0*e^(r*t))
+}
+exponential(5)
+
+pop = vector() #create an emtpy vector called pop that we will fill in our answers 
+for (time in t) { 
+  pop = c(pop, exponential(t))
+  }
+pop
+
+
